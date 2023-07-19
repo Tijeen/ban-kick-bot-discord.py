@@ -13,7 +13,7 @@ client = commands.Bot(command_prefix="?", intents=discord.Intents.all()) # defin
 @client.event 
 async def on_ready():
     print(f"Logged in as {client.user}.")
-    await client.tree.sync() # syncing bot when the bot starts
+    await client.tree.sync() # syncing commands when the bot starts
 
 # ban command
 @client.tree.command(name="ban", description="Ban a person from the server")
