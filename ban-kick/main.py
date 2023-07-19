@@ -29,6 +29,19 @@ async def ban(interaction: discord.Interaction, user: discord.Member, reason: st
 
     await interaction.response.send_message(embed=embed) # over here we are sending the embed to the discord, if you want to make this message invisible for other members do the following: Replace "await interaction.response.send_message(embed=embed)" with "await interaction.response.send_message(embed=embed, ephemeral=True)" 
 
+# ban command
+@client.tree.command(name="kick", description="Kick a person from the server")
+@app_commands.describe(user="The user that you want to kick") # describing the command options
+async def ban(interaction: discord.Interaction, user: discord.Member): # defining the options you can use
+
+    await user.kick() # banning the user with the reason provided
+
+    embed = discord.Embed(
+        description=f"Successfully kicked {user.mention} from {interaction.guild.name}.", # you could customize the embed over here
+        color=discord.Color.dark_purple() # you could customize the color of the embed here ( Ex:  discord.Color.green())
+    )
+
+    await interaction.response.send_message(embed=embed) # over here we are sending the embed to the discord, if you want to make this message invisible for other members do the following: Replace "await interaction.response.send_message(embed=embed)" with "await interaction.response.send_message(embed=embed, ephemeral=True)" 
 
 client.run(config["bot_token"]) # over here the bot gets the bot token from the config file.
 
